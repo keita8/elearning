@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>S'inscrire</h1>
+
+    <form action="{% url 'accounts:register' %}" method="POST">
+        {% csrf_token %}
+        {% comment %} <div>
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" name="username" id="username" placeholder="Votre nom d'utilisateur">    
+        </div> {% endcomment %}
+
+        <div>
+            <label for="email">Email</label>
+            <p>
+                {{ form.email }}
+            </p>
+            {% comment %} <input type="email" name="email" id="email" placeholder="Adresse email"> {% endcomment %}
+        </div>
+
+        <div>
+            <label for="password">Mot de passe</label>
+            <p>
+                {{ form.password }}
+            </p>
+            {% comment %} <input type="password" name="password" id="" placeholder="Mot de passe"> {% endcomment %}
+        </div>
+
+
+        <div>
+            <button type="submit">S'inscrire</button>
+        </div>
+    </form>
+
+    <p>
+        <a href="{% url 'index' %}">Accueil</a>
+    </p>
+    <br>
+    <hr>
+    <p>
+        <a href="{% url 'accounts:login' %}">Se connecter</a>
+    </p>
+
+    <!--
+    Votre avenir commence ici
+Apprenez à apprendre, découvrez les compétences de demain, et prenez votre carrière en main.
+
+Démarrer ma candidature
+Découvrir les formations
+
+    -->
+</body>
+</html>

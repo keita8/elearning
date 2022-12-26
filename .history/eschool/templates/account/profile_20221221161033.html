@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ user_form.email }}
+        {{ user_form.password }}
+        {{ profile_form.lastname }}
+        {{ profile_form.firstname }}
+        {{ profile_form.birth_date }}
+        {{ profile_form.phone_number }}
+        {{ profile_form.bio }}
+        {{ profile_form.avatar }}
+        <button type="submit">Valider</button>
+    </form>
+</body>
+</html>

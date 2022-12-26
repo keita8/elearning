@@ -1,0 +1,23 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db import models
+
+
+class Course(models.Model):
+    name = models.TextField()
+    year = models.IntegerField()
+    
+    class Meta:
+        unique_together = ("name", "year", )
+        verbose_name = 'Cours'
+        verbose_name_plural = 'Courss'
+
+
+class Grade(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    grade = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)])
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = 'Classe'
+        verbose_name_plural = 'Classes'

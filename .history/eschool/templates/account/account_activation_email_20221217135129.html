@@ -1,0 +1,12 @@
+
+{% autoescape off %}
+    Bonjour, 
+    Veuillez cliquer sur le lien ci-dessous pour confirmation l'activation de votre compte.
+    http://{{domain}}{% url 'account:activate' uidb64=uid token=token %}
+
+    <p>
+        <strong>
+            Veuillez ignorer ce message si vous n'êtes pas à l'origine de cette action.
+        </strong>
+    </p>
+{% endautoescape %}

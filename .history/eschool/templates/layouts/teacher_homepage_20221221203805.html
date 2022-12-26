@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PROFIL 
+    {% if user.sex == "HOMME" %}
+        Mr
+    {% else %}
+        Mme
+    {% endif %}
+         {{ user.lastname }} </h1>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'accounts:logout' %}">Se déconnecter</a>
+    {% endif %}
+
+    <address>
+        <p> Enseignant{% if user.sex == "FEMME" %}e{% endif %} : 
+            {{ user.lastname }} - {{ user.firstname }}
+        </p>
+        
+        <p>
+            Adresse email :  {{ user.user.email }}
+
+        </p>
+        <p>
+            Matière:
+            
+            {% for cours in user.course.all %}
+                {{ cours }}
+            {% endfor %}
+                
+        </p>
+        <p>
+            {% if user.phone_number %}
+          N° Téléphone :  {{ user.phone_number }}
+            {% endif %}
+        </p>
+
+        <strong>
+            {{ user.bio|safe|capfirst }}
+        </strong>
+    </address>
+
+    <div>
+        <img src="{{user.image.url}}" alt="" width="50" height="50">
+    </div>
+
+    <p>
+        consulter mon profil <a href="{% url 'accounts:profile' %}">par là</a>
+    </p>
+    <p>
+        changer mon mot de passe<a href="{% url 'accounts:' %}">par là</a>
+    </p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cours de 
+        {% for s in subjects.lessons.all %}
+            {{ s.subject.name. }}
+        {% endfor %}
+    </h1> 
+
+    <ul>
+        {% for lesson in subjects.lessons.all  %}
+        <li>
+            <p>
+                Chapitre - {{ lesson.grade }}
+                <a href="{% url 'course:lesson_detail' slug=lesson.slug subject=subjects.slug standard=lesson.standard.slug %}">
+                    {{ lesson.name }}
+                </a>
+            </p>
+            <p>
+                {% comment %} <video width="" height="" controls>
+                    <source src="{{ lesson.video.url }}" >
+                </video> {% endcomment %}
+
+            </p>
+        </li>
+        {% endfor %}
+
+    </ul>
+
+</body>
+</html>
